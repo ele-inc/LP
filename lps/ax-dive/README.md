@@ -2,6 +2,10 @@
 
 完全AI駆動型YouTube運用プログラム「AX DIVE」のLPです。
 
+**本番プレビュー**: https://ele-inc.github.io/LP/lps/ax-dive/
+
+> mainブランチにpushすると自動でGitHub Pagesに反映されます
+
 ---
 
 ## ファイル構成
@@ -16,7 +20,14 @@ lps/ax-dive/
 
 ## プレビュー方法
 
-### 方法1: VSCode Live Server（おすすめ）
+### 方法1: GitHub Pages（本番確認）
+
+https://ele-inc.github.io/LP/lps/ax-dive/
+
+- `main` ブランチにpushすると自動反映
+- 反映まで1-2分かかる場合あり
+
+### 方法2: VSCode Live Server（ローカル開発）
 
 1. VSCodeで `index.html` を開く
 2. 右クリック → 「Open with Live Server」
@@ -24,7 +35,7 @@ lps/ax-dive/
 
 ※ Live Server拡張機能が必要です
 
-### 方法2: ブラウザで直接開く
+### 方法3: ブラウザで直接開く
 
 ```bash
 open lps/ax-dive/index.html
@@ -32,7 +43,7 @@ open lps/ax-dive/index.html
 
 または Finder で `index.html` をダブルクリック
 
-### 方法3: ローカルサーバー
+### 方法4: ローカルサーバー
 
 ```bash
 cd lps/ax-dive
