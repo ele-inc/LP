@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>BOLT WRITING</title>
+    <title>BOLT WRITING | ZERO - 完全AI駆動のYouTube運用</title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -52,16 +52,13 @@
       }
       @layer components {
         .section-spacing {
-          @apply py-32 lg:py-48;
+          @apply py-24 lg:py-36;
         }
         .btn-primary {
           @apply inline-flex items-center justify-center rounded-full bg-navy px-7 py-3.5 text-[13px] font-medium text-white transition-all duration-300 hover:bg-primary hover:shadow-glow-blue active:scale-[0.98];
         }
         .btn-secondary {
           @apply inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-[13px] font-medium text-navy border border-slate-200 transition-all duration-300 hover:border-navy active:scale-[0.98];
-        }
-        .card-interactive {
-          @apply relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-10 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-high-end;
         }
         .dynamic-bg {
           background: radial-gradient(
@@ -93,17 +90,6 @@
               transparent 50%
             );
         }
-        .diagram-line {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: draw 3s ease forwards;
-        }
-        @keyframes draw {
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-        /* グラデーションテキスト */
         .gradient-text {
           background: linear-gradient(
             135deg,
@@ -121,7 +107,6 @@
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
-        /* グリッド背景パターン */
         .grid-bg {
           background-image:
             linear-gradient(
@@ -136,7 +121,6 @@
             );
           background-size: 40px 40px;
         }
-        /* アニメーショングラデーション */
         .animated-gradient {
           background: linear-gradient(
             -45deg,
@@ -159,7 +143,6 @@
             background-position: 0% 50%;
           }
         }
-        /* フェードインアニメーション */
         .animate-fade-up {
           animation: fadeUp 0.8s ease-out forwards;
           opacity: 0;
@@ -186,61 +169,40 @@
         .animate-delay-400 {
           animation-delay: 0.4s;
         }
-        /* ホバーリフト効果 */
-        .hover-lift {
-          transition:
-            transform 0.4s ease,
-            box-shadow 0.4s ease;
-        }
-        .hover-lift:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 25px 50px -12px rgba(0, 102, 255, 0.15);
-        }
-        /* グラスモーフィズム強化 */
         .glass-card {
           background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
         }
-        /* グラデーションボーダー */
-        .gradient-border {
-          position: relative;
-          background: white;
+        /* FAQ toggle */
+        .faq-answer {
+          max-height: 0;
+          overflow: hidden;
+          transition:
+            max-height 0.3s ease,
+            padding 0.3s ease;
         }
-        .gradient-border::before {
-          content: '';
-          position: absolute;
-          inset: -2px;
-          border-radius: inherit;
-          padding: 2px;
-          background: linear-gradient(135deg, #0066ff, #8b5cf6, #ec4899);
-          -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
+        .faq-item.open .faq-answer {
+          max-height: 300px;
+          padding-top: 1rem;
         }
-        /* フローティングドット */
-        .floating-dot {
-          animation: float 3s ease-in-out infinite;
+        .faq-item.open .faq-icon {
+          transform: rotate(45deg);
         }
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
+        .faq-icon {
+          transition: transform 0.3s ease;
+        }
+        /* Countdown mono */
+        .countdown-digit {
+          font-variant-numeric: tabular-nums;
         }
       }
     </style>
   </head>
   <body class="dynamic-bg">
+    <!-- ================================================================== -->
+    <!-- Nav -->
+    <!-- ================================================================== -->
     <nav
       class="fixed top-0 z-[100] w-full border-b border-slate-100/50 bg-white/70 backdrop-blur-2xl"
     >
@@ -261,12 +223,12 @@
           <a
             class="text-[13px] font-semibold text-slate-custom hover:text-navy transition-colors tracking-[0.05em]"
             href="#features"
-            >機能紹介</a
+            >ZEROの機能</a
           >
           <a
             class="text-[13px] font-semibold text-slate-custom hover:text-navy transition-colors tracking-[0.05em]"
             href="#testimonials"
-            >受講生の声</a
+            >成功事例</a
           >
           <a
             class="text-[13px] font-semibold text-slate-custom hover:text-navy transition-colors tracking-[0.05em]"
@@ -277,21 +239,24 @@
         <div class="flex items-center gap-6">
           <a
             class="text-[13px] font-semibold text-slate-custom hover:text-navy transition-colors tracking-[0.05em]"
-            href="#program"
-            >講座内容</a
+            href="#support"
+            >サポート</a
           >
           <a
             class="btn-primary py-2.5 px-6 text-[12px] tracking-[0.05em]"
             href="#apply"
-            >審査に申し込む</a
+            >受講希望フォーム</a
           >
         </div>
       </div>
     </nav>
+
+    <!-- ================================================================== -->
+    <!-- セクション1: ヒーロー -->
+    <!-- ================================================================== -->
     <section
       class="relative pt-48 pb-24 lg:pt-64 lg:pb-48 overflow-hidden mesh-gradient"
     >
-      <!-- グリッド背景 -->
       <div
         class="absolute inset-0 grid-bg opacity-60 z-0 pointer-events-none"
       ></div>
@@ -315,7 +280,9 @@
           <p
             class="mx-auto max-w-xl text-base text-slate-custom leading-[1.8] font-normal mb-12"
           >
-            10万件の添削データを学習したAIエージェント「ZERO」が、<br class="hidden sm:block" />
+            10万件の添削データを学習したAIエージェント「ZERO」が、<br
+              class="hidden sm:block"
+            />
             あなた専用の「伸びて、売れる」台本を即座に生成。<br
               class="hidden sm:block"
             />
@@ -325,558 +292,142 @@
             class="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             <a class="btn-primary" href="#apply">
-              無料で審査に申し込む
+              受講希望フォームへ
               <span class="ml-2 text-[14px]">→</span>
             </a>
-            <a class="btn-secondary" href="#features">3分で分かる機能紹介</a>
-          </div>
-        </div>
-        <div class="mt-32 relative mx-auto max-w-5xl">
-          <div
-            class="relative rounded-[1.5rem] bg-slate-900/5 p-3 ring-1 ring-slate-900/10 shadow-high-end backdrop-blur-sm"
-          >
-            <div
-              class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl"
-            >
-              <div
-                class="flex h-10 items-center border-b border-slate-100 bg-slate-50/50 px-5"
-              >
-                <div class="flex gap-1.5">
-                  <div class="h-2 w-2 rounded-full bg-slate-200"></div>
-                  <div class="h-2 w-2 rounded-full bg-slate-200"></div>
-                  <div class="h-2 w-2 rounded-full bg-slate-200"></div>
-                </div>
-              </div>
-              <div class="flex h-[580px] divide-x divide-slate-50">
-                <div class="w-64 bg-slate-50/30 p-8 flex flex-col">
-                  <div class="mb-8 flex items-center gap-2.5">
-                    <div
-                      class="w-7 h-7 rounded bg-primary/10 flex items-center justify-center"
-                    >
-                      <span
-                        class="material-symbols-outlined text-primary text-xs"
-                        >auto_awesome</span
-                      >
-                    </div>
-                    <span
-                      class="text-[10px] font-bold tracking-widest text-slate-400 uppercase"
-                      >Analysis Engine</span
-                    >
-                  </div>
-                  <div class="flex-1 space-y-5">
-                    <div
-                      class="rounded-xl border border-slate-100 bg-white p-4 text-[12px] text-slate-600 shadow-sm leading-relaxed"
-                    >
-                      ターゲットの「潜在的な不安」を特定。心理的リアクタンスを回避する導入部を構成中...
-                    </div>
-                    <div class="space-y-3 opacity-30">
-                      <div class="h-1 w-full bg-slate-200 rounded-full"></div>
-                      <div class="h-1 w-3/4 bg-slate-200 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div
-                    class="mt-auto h-10 flex items-center px-3 rounded-lg border border-slate-100 bg-white"
-                  >
-                    <div class="h-1.5 w-20 bg-slate-100 rounded-full"></div>
-                    <span
-                      class="ml-auto material-symbols-outlined text-primary/40 text-base"
-                      >send</span
-                    >
-                  </div>
-                </div>
-                <div class="flex-1 bg-white p-12 overflow-y-auto">
-                  <div class="max-w-lg mx-auto">
-                    <div class="mb-10">
-                      <div class="inline-flex gap-2 mb-4">
-                        <span
-                          class="px-2 py-0.5 rounded bg-blue-50 text-primary text-[9px] font-bold tracking-widest uppercase"
-                          >Psychology v2.4</span
-                        >
-                        <span
-                          class="px-2 py-0.5 rounded bg-slate-50 text-slate-400 text-[9px] font-bold tracking-widest uppercase"
-                          >Retention Focus</span
-                        >
-                      </div>
-                      <h2
-                        class="text-2xl font-bold text-navy leading-snug tracking-heading"
-                      >
-                        高収益バックエンド導線：<br />脳の報酬系を刺激するシナリオ
-                      </h2>
-                    </div>
-                    <div class="space-y-10">
-                      <div class="relative pl-6 border-l border-primary/20">
-                        <div
-                          class="absolute -left-1 top-0 h-2 w-2 rounded-full bg-primary shadow-glow-blue"
-                        ></div>
-                        <h4
-                          class="text-[10px] font-bold text-primary mb-3 tracking-widest uppercase"
-                        >
-                          Phase 01: The Primitive Hook
-                        </h4>
-                        <p
-                          class="text-base text-navy font-medium leading-relaxed"
-                        >
-                          「努力しているのに結果が出ないのは、あなたの能力のせいではありません。ただ、無意識のうちに"ある脳の性質"にブレーキをかけられているだけなのです。」
-                        </p>
-                      </div>
-                      <div class="relative pl-6 border-l border-slate-100">
-                        <h4
-                          class="text-[10px] font-bold text-slate-300 mb-3 tracking-widest uppercase"
-                        >
-                          Phase 02: Logical Reinforcement
-                        </h4>
-                        <div class="space-y-3">
-                          <div
-                            class="h-2 w-full bg-slate-50 rounded-full"
-                          ></div>
-                          <div class="h-2 w-5/6 bg-slate-50 rounded-full"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a class="btn-secondary" href="#features">ZEROの機能を見る</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 信頼構築セクション -->
-    <section class="py-24 lg:py-32 relative overflow-hidden">
+    <!-- ================================================================== -->
+    <!-- セクション2: 動画エリア -->
+    <!-- ================================================================== -->
+    <section class="py-20 lg:py-28 relative overflow-hidden">
       <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-b from-white to-slate-50/50"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-white to-slate-50/50"
+        ></div>
       </div>
       <div class="mx-auto max-w-3xl px-8 relative z-10 text-center">
-        <div
-          class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[10px] font-bold text-primary tracking-[0.15em] uppercase mb-8"
+        <p
+          class="text-sm font-bold text-primary mb-6 tracking-[0.1em] uppercase"
         >
-          AI Agent "ZERO"
-        </div>
-        <h2
-          class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-6"
-        >
-          マジで使える<br /><span class="gradient-text">AIエージェント</span>、できました。
-        </h2>
-        <p class="text-base text-slate-custom leading-[1.8] font-normal max-w-xl mx-auto mb-10">
-          2025年6月に完成後、半年以上のテストリリースを重ねて<br class="hidden sm:block" />
-          心を込めて、満足頂ける形にしました。<br class="hidden sm:block" />
-          責任を持って、永久的に進化をさせていきます。
+          ▼ まずは下記の動画をご覧ください ▼
         </p>
-        <div class="flex flex-wrap items-center justify-center gap-8">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-navy">10万件+</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">学習データ</div>
-          </div>
-          <div class="h-8 w-px bg-slate-200"></div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-navy">6ヶ月+</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">テスト期間</div>
-          </div>
-          <div class="h-8 w-px bg-slate-200"></div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-navy">永久進化</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">アップデート保証</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 受講生の声セクション -->
-    <section id="testimonials" class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：ドットパターン + グラデーション -->
-      <div class="absolute inset-0 z-0">
+        <!-- 動画埋め込みプレースホルダー -->
         <div
-          class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/40 to-slate-50/50"
-        ></div>
-        <div
-          class="absolute inset-0"
-          style="
-            background-image: radial-gradient(
-              circle at 1px 1px,
-              rgba(0, 102, 255, 0.07) 1px,
-              transparent 0
-            );
-            background-size: 32px 32px;
-          "
-        ></div>
-        <div
-          class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
-        ></div>
-        <div
-          class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-blue-300/10 rounded-full blur-[100px] pointer-events-none"
-        ></div>
-      </div>
-      <div class="mx-auto max-w-7xl px-8 relative z-10">
-        <div class="text-center mb-16">
-          <div
-            class="text-[10px] font-medium text-slate-400 mb-4 tracking-[0.2em] uppercase"
-          >
-            Testimonials
-          </div>
-          <h2
-            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-5"
-          >
-            すでに<span class="gradient-text">成果を出している</span
-            ><br />受講生たち
-          </h2>
-          <p class="text-base text-slate-custom font-normal">
-            導入後わずか90日で、こんな変化が起きています。
-          </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- カード1 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
-          >
-            <div>
-              <div class="mb-6 flex items-center gap-4">
-                <div
-                  class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg"
-                >
-                  <svg
-                    class="w-7 h-7 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-bold text-navy text-lg">T.K さん</p>
-                  <p class="text-[12px] text-slate-400 mt-0.5">
-                    ビジネス系YouTuber｜登録者 5.2万人
-                  </p>
-                </div>
-              </div>
-              <p class="text-slate-600 text-[15px] leading-relaxed">
-                「正直、最初は半信半疑でした。でも使ってみたら、台本作成が1/3の時間で終わるように。驚いたのは視聴維持率が平均5%も上がったこと。」
-              </p>
-            </div>
-            <div class="mt-8 pt-5 border-t border-slate-100">
-              <p class="text-navy font-bold text-sm">
-                月間収益 <span class="text-primary">120%</span> UP
-              </p>
-              <p class="text-[11px] text-slate-400 mt-1">導入3ヶ月後</p>
-            </div>
-          </div>
-          <!-- カード2 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
-          >
-            <div>
-              <div class="mb-6 flex items-center gap-4">
-                <div
-                  class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center flex-shrink-0 shadow-lg"
-                >
-                  <svg
-                    class="w-7 h-7 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-bold text-navy text-lg">M.S さん</p>
-                  <p class="text-[12px] text-slate-400 mt-0.5">
-                    教育系チャンネル｜登録者 12.8万人
-                  </p>
-                </div>
-              </div>
-              <p class="text-slate-600 text-[15px] leading-relaxed">
-                「教育系は"分かりやすさ"が命。専門用語を自然に噛み砕いてくれる。おかげで視聴者の理解度が上がり、成約率まで改善しました。」
-              </p>
-            </div>
-            <div class="mt-8 pt-5 border-t border-slate-100">
-              <p class="text-navy font-bold text-sm">
-                LINE登録 <span class="text-primary">3倍</span>・成約率
-                <span class="text-primary">1.5倍</span>
-              </p>
-              <p class="text-[11px] text-slate-400 mt-1">導入4ヶ月後</p>
-            </div>
-          </div>
-          <!-- カード3 -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
-          >
-            <div>
-              <div class="mb-6 flex items-center gap-4">
-                <div
-                  class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0 shadow-lg"
-                >
-                  <svg
-                    class="w-7 h-7 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-bold text-navy text-lg">Y.N さん</p>
-                  <p class="text-[12px] text-slate-400 mt-0.5">
-                    Vlogクリエイター｜登録者 2.1万人
-                  </p>
-                </div>
-              </div>
-              <p class="text-slate-600 text-[15px] leading-relaxed">
-                「何を話せばいいか分からない日々が嘘みたい。提案される構成に従うだけで、視聴者が最後まで見てくれる動画が作れるようになりました。」
-              </p>
-            </div>
-            <div class="mt-8 pt-5 border-t border-slate-100">
-              <p class="text-navy font-bold text-sm">
-                平均再生数 <span class="text-primary">450%</span> UP
-              </p>
-              <p class="text-[11px] text-slate-400 mt-1">更新頻度も週2→週4に</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- えるの経歴紹介セクション -->
-    <section id="instructor" class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：ソフトなグラデーション + アクセント -->
-      <div class="absolute inset-0 z-0">
-        <div
-          class="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30"
-        ></div>
-        <div
-          class="absolute top-0 left-0 w-full h-full"
-          style="
-            background: radial-gradient(
-              ellipse 60% 40% at 80% 20%,
-              rgba(0, 102, 255, 0.04) 0%,
-              transparent 50%
-            );
-          "
-        ></div>
-        <div
-          class="absolute bottom-0 left-0 w-full h-full"
-          style="
-            background: radial-gradient(
-              ellipse 50% 30% at 20% 80%,
-              rgba(0, 102, 255, 0.03) 0%,
-              transparent 50%
-            );
-          "
-        ></div>
-      </div>
-      <div class="mx-auto max-w-6xl px-8 relative z-10">
-        <div class="text-center mb-16">
-          <div
-            class="inline-block text-[9px] font-bold tracking-[0.3em] text-primary mb-4 uppercase"
-          >
-            Instructor
-          </div>
-          <h2
-            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl mb-5"
-          >
-            講師紹介
-          </h2>
-        </div>
-        <div class="flex flex-col lg:flex-row items-center gap-16">
-          <div class="w-full lg:w-1/3">
-            <div class="relative aspect-square max-w-xs mx-auto">
-              <div
-                class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5"
-              ></div>
-              <div
-                class="absolute inset-4 rounded-2xl bg-white shadow-high-end flex items-center justify-center"
-              >
-                <div class="text-center">
-                  <div
-                    class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mb-4"
-                  >
-                    <span class="text-4xl text-white font-bold">L</span>
-                  </div>
-                  <div class="text-xl font-bold text-navy">える</div>
-                  <div class="text-[11px] text-slate-400 mt-1">BOLT WRITING 代表</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full lg:w-2/3">
-            <h3 class="text-2xl font-bold text-navy mb-6 tracking-heading">
-              なぜ、えるの台本は<br />「売れる」のか？
-            </h3>
-            <div class="space-y-4 text-base text-slate-custom leading-relaxed">
-              <p>
-                <strong class="text-navy">累計10万件以上</strong
-                >のYouTube台本を分析・添削。その膨大なデータから「視聴者が離脱するポイント」と「購買につながる言葉の法則」を完全に解明しました。
-              </p>
-              <p>
-                独自開発の<strong class="text-navy"
-                  >「ニューロボルトライティング」</strong
-                >は、視聴者の脳の報酬系を刺激し、"気づいたら最後まで見ていた"を実現する台本構成メソッド。これまで<strong
-                  class="text-navy"
-                  >500名以上のクリエイター</strong
-                >が成果を出しています。
-              </p>
-              <p>
-                この7年分の全ノウハウを、AIに完全移植。あなたは今日から、えるの頭脳を"無制限に"使えるようになります。
-              </p>
-            </div>
-            <div
-              class="flex flex-wrap gap-10 mt-10 pt-8 border-t border-slate-100"
-            >
-              <div>
-                <div class="text-2xl font-bold text-navy">10万件+</div>
-                <div class="text-[11px] text-slate-400 mt-1">添削実績</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-navy">500名+</div>
-                <div class="text-[11px] text-slate-400 mt-1">指導実績</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-navy">7年+</div>
-                <div class="text-[11px] text-slate-400 mt-1">業界経験</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 講座の特徴・オフ会セクション -->
-    <section id="program" class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：幾何学的サークル -->
-      <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-white"></div>
-        <svg
-          class="absolute top-0 right-0 w-[800px] h-[800px] opacity-[0.04]"
-          viewBox="0 0 400 400"
+          class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-high-end bg-slate-900 aspect-video mb-8 flex items-center justify-center"
         >
-          <circle
-            cx="200"
-            cy="200"
-            r="180"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-          <circle
-            cx="200"
-            cy="200"
-            r="140"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-          <circle
-            cx="200"
-            cy="200"
-            r="100"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-          <circle
-            cx="200"
-            cy="200"
-            r="60"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-        </svg>
-        <div
-          class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-50/50 to-transparent rounded-full"
-        ></div>
-      </div>
-      <div class="mx-auto max-w-7xl px-8 relative z-10">
-        <div class="text-center mb-16">
-          <div
-            class="inline-block text-[9px] font-bold tracking-[0.3em] text-primary mb-4 uppercase"
-          >
-            Program Features
+          <div class="text-center">
+            <span
+              class="material-symbols-outlined text-white/30 text-6xl mb-4 block"
+              >play_circle</span
+            >
+            <p class="text-white/40 text-sm">[UTAGE動画埋め込み]</p>
           </div>
-          <h2
-            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl mb-5"
-          >
-            BOLT WRITINGの講座内容
-          </h2>
-          <p class="text-base text-slate-custom font-normal max-w-xl mx-auto">
-            AIエージェントだけでなく、コミュニティと学びの場を提供します。
+        </div>
+        <!-- カウントダウンタイマー -->
+        <div class="mb-8">
+          <p class="text-sm text-slate-custom mb-3">動画削除まであと…</p>
+          <div class="inline-flex items-center gap-3">
+            <div
+              class="bg-navy text-white rounded-lg px-4 py-3 text-center min-w-[60px]"
+            >
+              <div
+                class="text-2xl font-bold countdown-digit"
+                id="countdown-days"
+              >
+                --
+              </div>
+              <div class="text-[9px] text-white/50 uppercase tracking-widest">
+                Days
+              </div>
+            </div>
+            <span class="text-navy font-bold text-lg">:</span>
+            <div
+              class="bg-navy text-white rounded-lg px-4 py-3 text-center min-w-[60px]"
+            >
+              <div
+                class="text-2xl font-bold countdown-digit"
+                id="countdown-hours"
+              >
+                --
+              </div>
+              <div class="text-[9px] text-white/50 uppercase tracking-widest">
+                Hours
+              </div>
+            </div>
+            <span class="text-navy font-bold text-lg">:</span>
+            <div
+              class="bg-navy text-white rounded-lg px-4 py-3 text-center min-w-[60px]"
+            >
+              <div
+                class="text-2xl font-bold countdown-digit"
+                id="countdown-min"
+              >
+                --
+              </div>
+              <div class="text-[9px] text-white/50 uppercase tracking-widest">
+                Min
+              </div>
+            </div>
+            <span class="text-navy font-bold text-lg">:</span>
+            <div
+              class="bg-navy text-white rounded-lg px-4 py-3 text-center min-w-[60px]"
+            >
+              <div
+                class="text-2xl font-bold countdown-digit"
+                id="countdown-sec"
+              >
+                --
+              </div>
+              <div class="text-[9px] text-white/50 uppercase tracking-widest">
+                Sec
+              </div>
+            </div>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-2">
+            [UTAGEカウントダウンタイマー]
           </p>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          <!-- オフ会・セミナー -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+        <p class="text-base text-navy font-bold mb-8">
+          受講をご希望の方は、後述の「受講希望フォーム」をご提出ください。
+        </p>
+        <div
+          class="bg-slate-50 rounded-xl p-6 text-left space-y-2 text-sm text-slate-500 leading-relaxed"
+        >
+          <p>
+            <span class="text-navy font-medium">✓</span>
+            この案内は、絶対に外部に漏らさないでください（受け入れに上限があるため）
+          </p>
+          <p>
+            <span class="text-navy font-medium">✓</span>
+            フォームは動画視聴後に提出してください（一定時間視聴後にフォームが表示されます）
+          </p>
+          <p>
+            <span class="text-navy font-medium">✓</span>
+            動画の再生は1.2〜1.5倍速推奨です。
+          </p>
+        </div>
+        <div
+          class="mt-8 bg-white rounded-xl p-5 border border-slate-100 text-[13px] text-slate-400 leading-relaxed"
+        >
+          動画を一定時間視聴されると以下が表示されます：<br />
+          <span class="text-navy font-medium">受講希望フォーム</span>
+          ・<span class="text-navy font-medium">お客様の成功事例</span> ・<span
+            class="text-navy font-medium"
+            >ZEROの詳細</span
           >
-            <div
-              class="text-[10px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-            >
-              Offline
-            </div>
-            <h3 class="text-lg font-bold text-navy mb-4">オフ会・交流会</h3>
-            <p class="text-sm text-slate-500 leading-relaxed mb-6">
-              3ヶ月に1回、受講生限定のオフ会を開催。同じ志を持つ仲間との交流や、直接えるに質問できる貴重な機会です。
-            </p>
-            <ul class="space-y-2 text-sm text-slate-500">
-              <li>— 全国主要都市で開催</li>
-              <li>— 懇親会付き</li>
-              <li>— 講師に直接相談可能</li>
-            </ul>
-          </div>
-
-          <!-- 月次ライブ -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
-          >
-            <div
-              class="text-[10px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-            >
-              Live
-            </div>
-            <h3 class="text-lg font-bold text-navy mb-4">
-              月次オンラインライブ
-            </h3>
-            <p class="text-sm text-slate-500 leading-relaxed mb-6">
-              毎月1回、最新のYouTubeトレンドやAI活用テクニックをライブで解説。リアルタイムで質問もできます。
-            </p>
-            <ul class="space-y-2 text-sm text-slate-500">
-              <li>— 最新トレンド解説</li>
-              <li>— Q&Aセッション</li>
-              <li>— アーカイブ視聴可能</li>
-            </ul>
-          </div>
-
-          <!-- 専用コミュニティ -->
-          <div
-            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
-          >
-            <div
-              class="text-[10px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-            >
-              Community
-            </div>
-            <h3 class="text-lg font-bold text-navy mb-4">専用コミュニティ</h3>
-            <p class="text-sm text-slate-500 leading-relaxed mb-6">
-              受講生専用のSlackコミュニティで、仲間と情報交換。成功事例の共有や相互フィードバックで成長を加速。
-            </p>
-            <ul class="space-y-2 text-sm text-slate-500">
-              <li>— 24時間いつでもアクセス</li>
-              <li>— 成功事例の共有</li>
-              <li>— 仲間とのコラボ機会</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- YouTubeの課題セクション - 5つの壁 (ダーク) -->
+    <!-- ================================================================== -->
+    <!-- セクション3: 問題提起「YouTubeをやめよう」 -->
+    <!-- ================================================================== -->
     <section class="section-spacing bg-navy relative overflow-hidden">
-      <!-- クリエイティブ背景：グリッド + グロー -->
       <div class="absolute inset-0 z-0">
         <div
           class="absolute inset-0"
@@ -906,7 +457,11 @@
             YouTubeを<br /><span class="gradient-text-blue">やめよう</span>
           </h2>
         </div>
-        <!-- シンプルなリストレイアウト -->
+        <div class="text-center mb-12">
+          <p class="text-lg text-white/80 font-medium mb-8">
+            こんな悩み、ありませんか？
+          </p>
+        </div>
         <div class="max-w-2xl mx-auto space-y-6">
           <div class="flex items-start gap-4 border-l-2 border-white/20 pl-6">
             <p class="text-base text-slate-300 leading-relaxed">
@@ -923,79 +478,26 @@
               YouTubeに時間を取られすぎて、持続性がない
             </p>
           </div>
-          <div class="flex items-start gap-4 border-l-2 border-white/20 pl-6">
-            <p class="text-base text-slate-300 leading-relaxed">
-              時間を掛けて作ったのに、全然再生されない
-            </p>
-          </div>
-          <div
-            class="flex items-start gap-4 border-l-2 border-white/30 pl-6 mt-8"
-          >
-            <p class="text-lg text-slate-200 leading-relaxed font-medium">
-              再生数は伸びるけど売れない
-            </p>
-          </div>
         </div>
-
-        <!-- メッセージ -->
         <div class="mt-20 text-center">
           <div
             class="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-10"
           ></div>
-          <p class="text-xl md:text-2xl font-bold text-white mb-4">
-            あなたが時間を割くべきはYouTubeではない。
-          </p>
-          <p
-            class="text-base text-slate-400 font-light leading-loose max-w-xl mx-auto mb-6"
-          >
-            YouTubeは"仕事"ではなく、AIがやる"作業"です。<br />
-            企画立案、台本作成、構成の最適化——<br />
-            最も時間がかかる工程を、AIが代わりにやってくれます。
-          </p>
-          <p class="text-xl font-bold">
-            <span class="gradient-text-blue"
-              >あなたはもっと、価値のある仕事を。</span
-            >
+          <p class="text-xl md:text-2xl font-bold text-white">
+            もう、感覚に頼るのはやめましょう。
           </p>
         </div>
       </div>
     </section>
-    <section id="features" class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：流れるライン + グラデーション -->
+
+    <!-- ================================================================== -->
+    <!-- セクション4: ライティングの重要性 -->
+    <!-- ================================================================== -->
+    <section class="section-spacing relative overflow-hidden">
       <div class="absolute inset-0 z-0">
         <div
           class="absolute inset-0 bg-gradient-to-br from-white via-blue-50/20 to-white"
         ></div>
-        <svg
-          class="absolute inset-0 w-full h-full opacity-[0.04]"
-          viewBox="0 0 1200 800"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <path
-            d="M0,400 Q300,300 600,400 T1200,400"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="2"
-          />
-          <path
-            d="M0,450 Q300,350 600,450 T1200,450"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1.5"
-          />
-          <path
-            d="M0,500 Q300,400 600,500 T1200,500"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-          <path
-            d="M0,350 Q300,250 600,350 T1200,350"
-            fill="none"
-            stroke="#0066FF"
-            stroke-width="1"
-          />
-        </svg>
         <div
           class="absolute top-1/4 -left-64 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none"
         ></div>
@@ -1003,32 +505,183 @@
           class="absolute bottom-1/4 -right-64 w-[500px] h-[500px] bg-blue-300/10 rounded-full blur-[100px] pointer-events-none"
         ></div>
       </div>
-      <div class="mx-auto max-w-7xl px-8 relative z-10">
-        <div class="text-center mb-24">
+      <div class="mx-auto max-w-5xl px-8 relative z-10">
+        <div class="text-center mb-20">
           <div
             class="text-[10px] font-medium text-slate-400 mb-4 tracking-[0.2em] uppercase"
           >
-            Core Features
+            Why Writing Matters
           </div>
           <h2
             class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-5"
           >
-            "考える時間"を<br /><span class="gradient-text">ゼロにする</span
-            >3つの機能
+            YouTubeの成功は、<br /><span class="gradient-text">すべて台本</span
+            >で決まる
           </h2>
-          <p
-            class="text-base text-slate-custom font-normal max-w-xl mx-auto mt-4"
-          >
-            企画・構成・台本——すべてAIが自動で提案。<br />あなたは「選ぶだけ」でOKです。
+          <p class="text-base text-slate-custom font-normal max-w-xl mx-auto">
+            YouTubeで成果を出すために、最も重要なのは「ライティング」です。
           </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <!-- クリック率 -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6"
+            >
+              <span class="material-symbols-outlined text-primary text-xl"
+                >ads_click</span
+              >
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-3">
+              クリック率は、ライティングで決まる
+            </h3>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              タイトル、サムネイル、冒頭15秒。これらは全て「言葉の設計」、つまりライティングです。
+            </p>
+          </div>
+          <!-- 維持率 -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6"
+            >
+              <span class="material-symbols-outlined text-primary text-xl"
+                >schedule</span
+              >
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-3">
+              維持率は、ライティングで決まる
+            </h3>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              視聴者を最後まで引き込む台本構成。展開、フック、エモーション、全てライティングで設計します。
+            </p>
+          </div>
+          <!-- コンバージョン -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6"
+            >
+              <span class="material-symbols-outlined text-primary text-xl"
+                >trending_up</span
+              >
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-3">
+              コンバージョンは、ライティングで決まる
+            </h3>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              視聴者に行動してもらうための説得設計。これもライティングの力です。
+            </p>
+          </div>
+          <!-- 感覚では書けない -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-6"
+            >
+              <span class="material-symbols-outlined text-slate-400 text-xl"
+                >block</span
+              >
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-3">
+              でも、感覚では書けない
+            </h3>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              売れる台本には、再現性のある「型」があります。データに基づいた、科学的なライティングが必要です。
+            </p>
+          </div>
+        </div>
+        <div class="text-center">
+          <p class="text-xl font-bold">
+            <span class="gradient-text">だから、AIが必要なんです。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション5: ZEROの3つの機能 -->
+    <!-- ================================================================== -->
+    <section id="features" class="section-spacing relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/40 to-slate-50/50"
+        ></div>
+        <div
+          class="absolute inset-0"
+          style="
+            background-image: radial-gradient(
+              circle at 1px 1px,
+              rgba(0, 102, 255, 0.07) 1px,
+              transparent 0
+            );
+            background-size: 32px 32px;
+          "
+        ></div>
+        <div
+          class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+        ></div>
+      </div>
+      <div class="mx-auto max-w-7xl px-8 relative z-10">
+        <div class="text-center mb-8">
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[10px] font-bold text-primary tracking-[0.15em] uppercase mb-8"
+          >
+            AI Agent "ZERO"
+          </div>
+          <h2
+            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-5"
+          >
+            マジで使える<br /><span class="gradient-text">AIエージェント</span
+            >、できました。
+          </h2>
+          <p class="text-base text-slate-custom font-normal max-w-xl mx-auto">
+            ZEROの3つの機能で、YouTube運用の全てをカバーします。
+          </p>
+        </div>
+        <!-- Flow indicator -->
+        <div class="hidden lg:flex items-center justify-center gap-4 mb-16">
+          <div
+            class="flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2"
+          >
+            <span class="text-[11px] font-bold text-primary tracking-wide"
+              >① Market In Research</span
+            >
+          </div>
+          <span class="material-symbols-outlined text-slate-300"
+            >arrow_forward</span
+          >
+          <div
+            class="flex items-center gap-2 bg-emerald-50 rounded-full px-4 py-2"
+          >
+            <span class="text-[11px] font-bold text-emerald-600 tracking-wide"
+              >② Data Driven Planning</span
+            >
+          </div>
+          <span class="material-symbols-outlined text-slate-300"
+            >arrow_forward</span
+          >
+          <div
+            class="flex items-center gap-2 bg-purple-50 rounded-full px-4 py-2"
+          >
+            <span class="text-[11px] font-bold text-purple-600 tracking-wide"
+              >③ Neuro Bolt Writing</span
+            >
+          </div>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- 機能1: Market In Research -->
           <div class="group">
             <div
-              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300"
+              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300 h-full"
             >
               <div
-                class="mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 relative overflow-hidden"
+                class="relative mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 overflow-hidden"
               >
                 <svg
                   class="w-full h-full text-slate-300 group-hover:text-primary/50 transition-colors duration-500"
@@ -1057,28 +710,34 @@
                   ></path>
                 </svg>
               </div>
-              <div
-                class="text-[11px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-              >
-                01
+              <div class="mb-3">
+                <div
+                  class="absolute top-0 left-0 w-1 h-12 bg-primary rounded-bl-2xl rounded-tr-sm"
+                ></div>
+                <div
+                  class="text-[11px] font-medium text-primary mb-2 tracking-[0.1em] uppercase"
+                >
+                  01 — Market In Research
+                </div>
               </div>
               <h3 class="text-lg font-bold text-navy mb-3">
-                マーケットインリサーチ
+                市場分析に基づいた企画提案
               </h3>
               <p class="text-[15px] text-slate-500 leading-relaxed">
-                あなたの事業を徹底分析。市場のニーズと強みを掛け合わせた、勝てるポジションを明確にします。
+                市場データを徹底分析し、伸びる企画を自動提案。もう、感覚で企画を考える必要はありません。
               </p>
             </div>
           </div>
+          <!-- 機能2: Data Driven Planning -->
           <div class="group">
             <div
-              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300"
+              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300 h-full"
             >
               <div
-                class="mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 relative overflow-hidden"
+                class="relative mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 overflow-hidden"
               >
                 <svg
-                  class="w-full h-full text-slate-300 group-hover:text-primary/50 transition-colors duration-500"
+                  class="w-full h-full text-slate-300 group-hover:text-emerald-400/50 transition-colors duration-500"
                   fill="none"
                   viewBox="0 0 100 100"
                 >
@@ -1100,28 +759,31 @@
                   <circle cx="68" cy="32" fill="currentColor" r="3"></circle>
                 </svg>
               </div>
-              <div
-                class="text-[11px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-              >
-                02
+              <div class="mb-3">
+                <div
+                  class="text-[11px] font-medium text-emerald-600 mb-2 tracking-[0.1em] uppercase"
+                >
+                  02 — Data Driven Planning
+                </div>
               </div>
               <h3 class="text-lg font-bold text-navy mb-3">
-                データドリブンの企画立案
+                データドリブンな企画立案
               </h3>
               <p class="text-[15px] text-slate-500 leading-relaxed">
-                「次はどんな企画にしようかな？」そんな悩みとはお別れ。データに基づいた企画を自動提案します。
+                データに基づいた企画立案で、再現性のある成果を実現。「なぜこの企画が伸びるのか」が明確になります。
               </p>
             </div>
           </div>
+          <!-- 機能3: Neuro Bolt Writing -->
           <div class="group">
             <div
-              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300"
+              class="bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-high-end hover:border-slate-200 transition-all duration-300 h-full"
             >
               <div
-                class="mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 relative overflow-hidden"
+                class="relative mb-8 aspect-[4/3] rounded-xl bg-slate-50 flex items-center justify-center p-10 overflow-hidden"
               >
                 <svg
-                  class="w-full h-full text-slate-300 group-hover:text-primary/50 transition-colors duration-500"
+                  class="w-full h-full text-slate-300 group-hover:text-purple-400/50 transition-colors duration-500"
                   fill="none"
                   viewBox="0 0 100 100"
                 >
@@ -1144,157 +806,212 @@
                   ></path>
                 </svg>
               </div>
-              <div
-                class="text-[11px] font-medium text-slate-400 mb-3 tracking-[0.15em] uppercase"
-              >
-                03
+              <div class="mb-3">
+                <div
+                  class="text-[11px] font-medium text-purple-600 mb-2 tracking-[0.1em] uppercase"
+                >
+                  03 — Neuro Bolt Writing
+                </div>
               </div>
               <h3 class="text-lg font-bold text-navy mb-3">
-                <span class="gradient-text">ニューロボルト</span>ライティング
+                <span class="gradient-text">売れる台本</span>を即時生成
               </h3>
               <p class="text-[15px] text-slate-500 leading-relaxed">
-                プロ級の"売れる"台本を即時生成。あなたは気になる部分を"5分で"チェックして、撮影をするだけ。
+                脳科学とライティング理論に基づいた台本を即時生成。える式ライティングをAIが再現し、台本作成時間を劇的に短縮します。
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：シンプルなグラデーション -->
+
+    <!-- ================================================================== -->
+    <!-- セクション6: お客様の成功事例 -->
+    <!-- ================================================================== -->
+    <section id="testimonials" class="section-spacing relative overflow-hidden">
       <div class="absolute inset-0 z-0">
         <div
-          class="absolute inset-0 bg-gradient-to-b from-white via-slate-50/60 to-blue-50/40"
+          class="absolute inset-0 bg-gradient-to-b from-slate-50/50 via-white to-blue-50/30"
         ></div>
         <div
-          class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px]"
+          class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
         ></div>
         <div
-          class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-blue-300/[0.04] rounded-full blur-[80px]"
+          class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-blue-300/10 rounded-full blur-[100px] pointer-events-none"
         ></div>
       </div>
       <div class="mx-auto max-w-7xl px-8 relative z-10">
-        <div class="flex flex-col lg:flex-row items-center gap-24">
-          <div class="w-full lg:w-1/2">
-            <div
-              class="inline-block px-3 py-1 rounded-full bg-navy text-white text-[9px] font-bold tracking-widest uppercase mb-6"
-            >
-              Data-Driven Intelligence
+        <div class="text-center mb-16">
+          <div
+            class="text-[10px] font-medium text-slate-400 mb-4 tracking-[0.2em] uppercase"
+          >
+            Success Stories
+          </div>
+          <h2
+            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-5"
+          >
+            お客様の<span class="gradient-text">成功事例</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <!-- 事例1 -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
+          >
+            <div>
+              <div class="mb-6 flex items-center gap-4">
+                <div
+                  class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg"
+                >
+                  <svg
+                    class="w-7 h-7 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-navy text-lg">お客様の声 01</p>
+                  <p class="text-[12px] text-slate-400 mt-0.5">
+                    [お客様名・写真プレースホルダー]
+                  </p>
+                </div>
+              </div>
+              <div class="mb-4">
+                <p class="text-primary font-bold text-sm mb-3">
+                  「リスト流入が2倍になった」
+                </p>
+              </div>
+              <p class="text-slate-600 text-[15px] leading-relaxed">
+                ZEROの企画提案機能で、ターゲットに刺さるコンテンツを量産。LINE登録数が2倍に増加し、売上も大幅アップしました。
+              </p>
             </div>
-            <h2
-              class="text-2xl lg:text-3xl font-bold tracking-heading text-navy mb-6"
-            >
-              なぜ"伸びる台本"と<br />"伸びない台本"が<br /><span
-                class="gradient-text"
-                >存在するのか？</span
-              >
-            </h2>
-            <p
-              class="text-base text-slate-custom leading-relaxed font-normal mb-10"
-            >
-              答えは明確です。<strong class="text-navy"
-                >「視聴者心理を理解しているかどうか」</strong
-              >——それだけ。BOLT WRITINGは、<strong class="text-navy"
-                >10万件以上の台本データ</strong
-              >から「売れた台本」と「売れなかった台本」の違いを徹底分析。<strong
-                class="text-navy"
-                >「視聴者が離脱するポイント」</strong
-              >と<strong class="text-navy">「購買につながる言葉の法則」</strong
-              >を完全に解明しました。
-            </p>
-            <div class="flex items-center gap-10">
-              <div>
-                <div class="text-2xl font-bold text-navy">10万件+</div>
-                <div
-                  class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1"
-                >
-                  分析済み台本
-                </div>
-              </div>
-              <div class="h-8 w-px bg-slate-200"></div>
-              <div>
-                <div class="text-2xl font-bold text-navy">7年分</div>
-                <div
-                  class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1"
-                >
-                  蓄積ノウハウ
-                </div>
-              </div>
+            <div class="mt-8 pt-5 border-t border-slate-100">
+              <p class="text-navy font-bold text-sm">
+                リスト流入 <span class="text-primary">200%</span> UP
+              </p>
             </div>
           </div>
-          <div class="w-full lg:w-1/2 relative">
-            <div class="relative max-w-md mx-auto">
-              <!-- 比較カード -->
-              <div class="space-y-4">
+          <!-- 事例2 -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
+          >
+            <div>
+              <div class="mb-6 flex items-center gap-4">
                 <div
-                  class="bg-white rounded-2xl p-6 border border-slate-100 shadow-high-end relative overflow-hidden"
+                  class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center flex-shrink-0 shadow-lg"
                 >
-                  <div
-                    class="absolute top-0 left-0 w-1 h-full bg-red-400"
-                  ></div>
-                  <div class="pl-4">
-                    <div
-                      class="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-2"
-                    >
-                      Before
-                    </div>
-                    <p class="text-sm text-slate-500 leading-relaxed">
-                      「今日は〇〇について解説します。まず最初に...」
-                    </p>
-                    <div
-                      class="mt-3 flex items-center gap-2 text-[11px] text-slate-400"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >trending_down</span
-                      >
-                      <span>離脱率 85%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-glow-blue"
+                  <svg
+                    class="w-7 h-7 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    <span class="material-symbols-outlined text-white text-sm"
-                      >arrow_downward</span
-                    >
-                  </div>
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
                 </div>
-                <div
-                  class="bg-white rounded-2xl p-6 border border-primary/30 shadow-high-end relative overflow-hidden"
-                >
-                  <div
-                    class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-blue-400"
-                  ></div>
-                  <div class="pl-4">
-                    <div
-                      class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2"
-                    >
-                      After - BOLT WRITING
-                    </div>
-                    <p class="text-sm text-navy leading-relaxed font-medium">
-                      「実は、あなたが今まで信じてきた〇〇は、完全に間違っていました...」
-                    </p>
-                    <div
-                      class="mt-3 flex items-center gap-2 text-[11px] text-primary"
-                    >
-                      <span class="material-symbols-outlined text-sm"
-                        >trending_up</span
-                      >
-                      <span>視聴維持率 +47%</span>
-                    </div>
-                  </div>
+                <div>
+                  <p class="font-bold text-navy text-lg">お客様の声 02</p>
+                  <p class="text-[12px] text-slate-400 mt-0.5">
+                    [お客様名・写真プレースホルダー]
+                  </p>
                 </div>
               </div>
+              <div class="mb-4">
+                <p class="text-primary font-bold text-sm mb-3">
+                  「再生数が10万回を超え、登録者が急増」
+                </p>
+              </div>
+              <p class="text-slate-600 text-[15px] leading-relaxed">
+                データドリブンな企画立案で、狙ったキーワードで上位表示。再生数10万回を超え、チャンネル登録者が一気に増えました。
+              </p>
             </div>
+            <div class="mt-8 pt-5 border-t border-slate-100">
+              <p class="text-navy font-bold text-sm">
+                再生数 <span class="text-primary">10万回</span> 突破
+              </p>
+            </div>
+          </div>
+          <!-- 事例3 -->
+          <div
+            class="bg-white rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-between hover:shadow-high-end transition-shadow duration-300"
+          >
+            <div>
+              <div class="mb-6 flex items-center gap-4">
+                <div
+                  class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0 shadow-lg"
+                >
+                  <svg
+                    class="w-7 h-7 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-navy text-lg">お客様の声 03</p>
+                  <p class="text-[12px] text-slate-400 mt-0.5">
+                    [お客様名・写真プレースホルダー]
+                  </p>
+                </div>
+              </div>
+              <div class="mb-4">
+                <p class="text-primary font-bold text-sm mb-3">
+                  「台本作成時間が1/3に短縮された」
+                </p>
+              </div>
+              <p class="text-slate-600 text-[15px] leading-relaxed">
+                ニューロボルトライティングで、台本作成が圧倒的に効率化。空いた時間で撮影と編集に集中でき、更新頻度も倍増しました。
+              </p>
+            </div>
+            <div class="mt-8 pt-5 border-t border-slate-100">
+              <p class="text-navy font-bold text-sm">
+                台本作成時間 <span class="text-primary">1/3</span> に短縮
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- その他の声 -->
+        <div class="text-center mb-8">
+          <p class="text-sm font-bold text-navy mb-6">その他、ご満足の声多数</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            class="bg-slate-50 rounded-xl p-6 border border-slate-100 text-center"
+          >
+            <p class="text-sm text-slate-500 leading-relaxed">
+              [お客様の声プレースホルダー 4]
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 rounded-xl p-6 border border-slate-100 text-center"
+          >
+            <p class="text-sm text-slate-500 leading-relaxed">
+              [お客様の声プレースホルダー 5]
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 rounded-xl p-6 border border-slate-100 text-center"
+          >
+            <p class="text-sm text-slate-500 leading-relaxed">
+              [お客様の声プレースホルダー 6]
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4つの専用モードセクション -->
+    <!-- ================================================================== -->
+    <!-- セクション7: ZEROの詳細 -->
+    <!-- ================================================================== -->
     <section class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：シンプルなグラデーション -->
       <div class="absolute inset-0 z-0">
         <div
           class="absolute inset-0 bg-gradient-to-br from-white via-blue-50/20 to-slate-50/40"
@@ -1302,104 +1019,136 @@
         <div
           class="absolute top-0 left-1/3 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px]"
         ></div>
-        <div
-          class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-200/[0.05] rounded-full blur-[100px]"
-        ></div>
       </div>
-      <div class="mx-auto max-w-7xl px-8 relative z-10">
-        <div class="text-center mb-20">
+      <div class="mx-auto max-w-6xl px-8 relative z-10">
+        <div class="text-center mb-16">
           <div
             class="text-[10px] font-medium text-slate-400 mb-4 tracking-[0.2em] uppercase"
           >
-            AI Modes
+            ZERO Details
           </div>
           <h2
-            class="text-2xl font-bold text-navy tracking-heading sm:text-3xl lg:text-4xl mb-5"
+            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl lg:text-4xl mb-5"
           >
-            <span class="gradient-text">これで全部</span>できます。
+            ZEROで<span class="gradient-text">実現できること</span>
           </h2>
-          <p
-            class="text-base text-slate-custom mt-4 font-normal max-w-xl mx-auto"
+        </div>
+        <!-- 目指す姿 -->
+        <div
+          class="bg-gradient-to-br from-navy to-slate-800 rounded-2xl p-10 md:p-14 text-center mb-16"
+        >
+          <div
+            class="text-[10px] font-bold text-white/50 mb-4 tracking-[0.2em] uppercase"
           >
-            用途ごとに最適化された4つの専用モードで、<br />YouTube運用のすべてをカバーします。
+            Vision
+          </div>
+          <p
+            class="text-lg md:text-xl font-bold text-white leading-relaxed max-w-2xl mx-auto"
+          >
+            AIを使いこなして、競合を圧倒的に引き離し、<br />
+            持続可能なYouTube運用を実現すること。
           </p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Plan -->
+        <!-- 5つの特徴 -->
+        <div class="space-y-6">
+          <!-- 特徴1 -->
           <div
-            class="relative rounded-2xl border border-slate-100 bg-white p-8 hover:border-primary/30 hover:shadow-high-end transition-all duration-300"
+            class="flex flex-col md:flex-row items-start gap-6 bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div
-              class="absolute top-0 left-0 w-1 h-12 bg-primary rounded-bl-2xl rounded-tr-sm"
-            ></div>
-            <div
-              class="text-[11px] font-medium text-primary mb-3 tracking-[0.1em] uppercase"
+              class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
             >
-              Plan
+              <span class="text-primary font-bold text-lg">1</span>
             </div>
-            <h3 class="font-bold text-navy text-lg mb-3">企画立案</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">
-              市場分析と強みの再定義、勝てるコンセプト構築。
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-navy mb-2">
+                あなたの情報をAI-NIZEします
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                あなた独自のナレッジ、業界知識、キャラクターをAIに学習させ、「あなたらしい」企画と台本を生成します。
+              </p>
+            </div>
           </div>
-          <!-- Full -->
+          <!-- 特徴2 -->
           <div
-            class="relative rounded-2xl border border-slate-100 bg-white p-8 hover:border-primary/30 hover:shadow-high-end transition-all duration-300"
+            class="flex flex-col md:flex-row items-start gap-6 bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div
-              class="absolute top-0 left-0 w-1 h-12 bg-emerald-500 rounded-bl-2xl rounded-tr-sm"
-            ></div>
-            <div
-              class="text-[11px] font-medium text-emerald-600 mb-3 tracking-[0.1em] uppercase"
+              class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
             >
-              Full
+              <span class="text-primary font-bold text-lg">2</span>
             </div>
-            <h3 class="font-bold text-navy text-lg mb-3">完全版台本</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">
-              長尺動画向けの、緻密な論理と情緒を兼ね備えた脚本。
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-navy mb-2">
+                伸びる企画が、いつでも分かる
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                市場データと過去の成功パターンから、伸びる企画を自動提案。もう企画に悩む必要はありません。
+              </p>
+            </div>
           </div>
-          <!-- Short -->
+          <!-- 特徴3 -->
           <div
-            class="relative rounded-2xl border border-slate-100 bg-white p-8 hover:border-primary/30 hover:shadow-high-end transition-all duration-300"
+            class="flex flex-col md:flex-row items-start gap-6 bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div
-              class="absolute top-0 left-0 w-1 h-12 bg-orange-500 rounded-bl-2xl rounded-tr-sm"
-            ></div>
-            <div
-              class="text-[11px] font-medium text-orange-600 mb-3 tracking-[0.1em] uppercase"
+              class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
             >
-              Short
+              <span class="text-primary font-bold text-lg">3</span>
             </div>
-            <h3 class="font-bold text-navy text-lg mb-3">ショート動画</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">
-              短尺特化のテンポと爆発力を生むスクリプト。
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-navy mb-2">
+                売れる台本を即時生成
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                クリック、維持率、コンバージョンを最大化する台本を、AIが数分で生成します。
+              </p>
+            </div>
           </div>
-          <!-- Bonus -->
+          <!-- 特徴4 -->
           <div
-            class="relative rounded-2xl border border-slate-100 bg-white p-8 hover:border-primary/30 hover:shadow-high-end transition-all duration-300"
+            class="flex flex-col md:flex-row items-start gap-6 bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div
-              class="absolute top-0 left-0 w-1 h-12 bg-purple-500 rounded-bl-2xl rounded-tr-sm"
-            ></div>
-            <div
-              class="text-[11px] font-medium text-purple-600 mb-3 tracking-[0.1em] uppercase"
+              class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
             >
-              Bonus
+              <span class="text-primary font-bold text-lg">4</span>
             </div>
-            <h3 class="font-bold text-navy text-lg mb-3">LINE特典</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">
-              成約の最後の一押しとなる、高価値な限定コンテンツ。
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-navy mb-2">
+                派生コンテンツも一発で作れる
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                YouTube動画から、ショート動画、SNS投稿まで、全ての派生コンテンツを自動生成します。
+              </p>
+            </div>
+          </div>
+          <!-- 特徴5 -->
+          <div
+            class="flex flex-col md:flex-row items-start gap-6 bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-high-end transition-all duration-300"
+          >
+            <div
+              class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+            >
+              <span class="text-primary font-bold text-lg">5</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-navy mb-2">
+                LINE特典まで作れる
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                LINE登録者に向けて、LINE限定の特典コンテンツを設計できます。ボーナスコンテンツの企画から台本まで、一発で作れます。
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- サポート内容セクション -->
-    <section class="section-spacing relative overflow-hidden">
-      <!-- クリエイティブ背景：シンプルなグラデーション -->
+    <!-- ================================================================== -->
+    <!-- セクション8: 8つのサポート内容 -->
+    <!-- ================================================================== -->
+    <section id="support" class="section-spacing relative overflow-hidden">
       <div class="absolute inset-0 z-0">
         <div
           class="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-white to-blue-50/30"
@@ -1421,15 +1170,14 @@
           <h2
             class="text-2xl font-bold text-navy tracking-heading sm:text-3xl mb-5"
           >
-            「これで結果が出なかったら<br />何をやっても無理」
+            8つのサポート内容
           </h2>
           <p
             class="text-base text-slate-custom mt-4 font-normal max-w-xl mx-auto"
           >
-            受講生にそう言わせる、圧倒的なサポート体制。<br />AIツールを渡して終わりではありません。
+            ZEROだけではありません。<br />あなたの成果を最大化するための、充実したサポート体制を用意しています。
           </p>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- 01 -->
           <div
@@ -1437,111 +1185,404 @@
           >
             <div class="text-[10px] font-bold text-primary mb-3">01</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              あなた専用にAIをカスタマイズ
+              あなたの情報をAI-NIZEします
             </h4>
             <p class="text-[12px] text-slate-400">
-              情報を整理・分析し、AIがあなたを理解。
+              初回オンボーディングで、あなた独自のナレッジをAIに学習させます。
             </p>
           </div>
-
           <!-- 02 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">02</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              伸びる企画10本をプレゼント
+              最初の一歩を、一緒に
             </h4>
             <p class="text-[12px] text-slate-400">
-              "伸びて・売れる企画"を10本ご提案。
+              最初の企画・台本作成を、プロが一緒にサポート。確実にスタートを切れます。
             </p>
           </div>
-
           <!-- 03 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">03</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              トレンド企画を自動提案
+              いつでも、伸びる企画が分かる
             </h4>
             <p class="text-[12px] text-slate-400">
-              "今"伸びるトレンドの企画も分かる。
+              ZERO（企画提案機能）で、いつでも伸びる企画を自動提案。
             </p>
           </div>
-
           <!-- 04 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">04</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              プロ級の台本を無制限生成
+              売れる台本を即時生成
             </h4>
             <p class="text-[12px] text-slate-400">
-              イチゲキで使えるレベルの台本を作り放題。
+              ZERO（台本生成機能）で、売れる台本を数分で生成。
             </p>
           </div>
-
           <!-- 05 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">05</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              30時間超の動画講座
+              完全AI駆動型YouTubeを学ぶ
             </h4>
             <p class="text-[12px] text-slate-400">
-              ボルトライティングマスタークラス提供。
+              える式ライティング・マスタークラス（動画教材）で、AIの使い方とライティングの原理原則を習得。
             </p>
           </div>
-
           <!-- 06 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">06</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              毎月のオンラインライブ
+              トレンドをインプットする
             </h4>
             <p class="text-[12px] text-slate-400">
-              毎月のオンラインライブで最新情報を共有。
+              月1回のライティング実践型ワークショップで、最新のトレンドとノウハウを学べます。
             </p>
           </div>
-
           <!-- 07 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">07</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              えるに質問し放題
+              プロにいつでも相談できる
             </h4>
             <p class="text-[12px] text-slate-400">
-              えるに質問し放題。困った時もすぐ相談。
+              Discordコミュニティで、プロ（える）にいつでも相談可能。
             </p>
           </div>
-
           <!-- 08 -->
           <div
             class="bg-white rounded-xl p-6 border border-slate-100 hover:shadow-high-end transition-all duration-300"
           >
             <div class="text-[10px] font-bold text-primary mb-3">08</div>
             <h4 class="font-bold text-navy mb-2 text-sm leading-tight">
-              良質なコミュニティ
+              良質な仲間と切磋琢磨
             </h4>
             <p class="text-[12px] text-slate-400">
-              3ヶ月に1回のオフセミナーで仲間と交流。
+              3ヶ月に一度のオフラインワークショップで、仲間と出会い、モチベーションを高めます。
             </p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション9: 講師紹介（える） -->
+    <!-- ================================================================== -->
+    <section id="instructor" class="section-spacing relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30"
+        ></div>
+        <div
+          class="absolute top-0 left-0 w-full h-full"
+          style="
+            background: radial-gradient(
+              ellipse 60% 40% at 80% 20%,
+              rgba(0, 102, 255, 0.04) 0%,
+              transparent 50%
+            );
+          "
+        ></div>
+      </div>
+      <div class="mx-auto max-w-6xl px-8 relative z-10">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block text-[9px] font-bold tracking-[0.3em] text-primary mb-4 uppercase"
+          >
+            Instructor
+          </div>
+          <h2
+            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl mb-5"
+          >
+            僕があなたをサポートします
+          </h2>
+        </div>
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+          <div class="w-full lg:w-1/3">
+            <div class="relative aspect-square max-w-xs mx-auto">
+              <div
+                class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5"
+              ></div>
+              <div
+                class="absolute inset-4 rounded-2xl bg-white shadow-high-end flex items-center justify-center"
+              >
+                <div class="text-center">
+                  <div
+                    class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mb-4"
+                  >
+                    <span class="text-4xl text-white font-bold">L</span>
+                  </div>
+                  <div class="text-xl font-bold text-navy">える</div>
+                  <div class="text-[11px] text-slate-400 mt-1">
+                    YouTube・ライティングコンサルタント
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-2/3">
+            <h3 class="text-2xl font-bold text-navy mb-6 tracking-heading">
+              える<span class="text-slate-400 text-base font-normal ml-2"
+                >YouTube・ライティングコンサルタント</span
+              >
+            </h3>
+            <div class="space-y-4 text-base text-slate-custom leading-relaxed">
+              <p>
+                YouTubeコンサルにて、<strong class="text-navy"
+                  >一撃で売上1700万円</strong
+                >を達成。自身のYouTubeチャンネルの<strong class="text-navy"
+                  >累計売上2億円</strong
+                >を突破。会社時代、アルバイトから<strong class="text-navy"
+                  >執行役員に就任</strong
+                >。
+              </p>
+              <p>
+                累計10万件以上のYouTube台本を分析・添削。その膨大なデータから「視聴者が離脱するポイント」と「購買につながる言葉の法則」を完全に解明しました。
+              </p>
+              <p>
+                この7年分の全ノウハウを、AIに完全移植。あなたは今日から、えるの頭脳を"無制限に"使えるようになります。
+              </p>
+            </div>
+            <div
+              class="flex flex-wrap gap-10 mt-10 pt-8 border-t border-slate-100"
+            >
+              <div>
+                <div class="text-2xl font-bold text-navy">1700万円</div>
+                <div class="text-[11px] text-slate-400 mt-1">一撃売上達成</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-navy">2億円+</div>
+                <div class="text-[11px] text-slate-400 mt-1">累計売上</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-navy">10万件+</div>
+                <div class="text-[11px] text-slate-400 mt-1">添削実績</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション10: よくある質問（FAQ） -->
+    <!-- ================================================================== -->
+    <section class="section-spacing relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-white via-slate-50/60 to-blue-50/40"
+        ></div>
+      </div>
+      <div class="mx-auto max-w-3xl px-8 relative z-10">
+        <div class="text-center mb-16">
+          <div
+            class="inline-block text-[9px] font-bold tracking-[0.3em] text-primary mb-4 uppercase"
+          >
+            FAQ
+          </div>
+          <h2
+            class="text-2xl font-bold tracking-heading text-navy sm:text-3xl mb-5"
+          >
+            よくある質問
+          </h2>
+        </div>
+        <div class="space-y-4">
+          <!-- Q1 -->
+          <div
+            class="faq-item bg-white rounded-xl border border-slate-100 overflow-hidden cursor-pointer hover:shadow-high-end transition-all duration-300"
+            onclick="this.classList.toggle('open')"
+          >
+            <div class="flex items-center justify-between p-6">
+              <p class="text-sm font-bold text-navy pr-4">
+                Q1. AIツールは初めてですが、使いこなせますか？
+              </p>
+              <span
+                class="faq-icon material-symbols-outlined text-slate-400 text-xl flex-shrink-0"
+                >add</span
+              >
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-sm text-slate-500 leading-relaxed">
+                はい、問題ありません。初回オンボーディングで、使い方を丁寧にサポートします。また、マスタークラス動画で、AIの使い方を体系的に学べます。
+              </p>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div
+            class="faq-item bg-white rounded-xl border border-slate-100 overflow-hidden cursor-pointer hover:shadow-high-end transition-all duration-300"
+            onclick="this.classList.toggle('open')"
+          >
+            <div class="flex items-center justify-between p-6">
+              <p class="text-sm font-bold text-navy pr-4">
+                Q2. YouTubeチャンネルがまだ小さいのですが、参加できますか？
+              </p>
+              <span
+                class="faq-icon material-symbols-outlined text-slate-400 text-xl flex-shrink-0"
+                >add</span
+              >
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-sm text-slate-500 leading-relaxed">
+                はい、むしろ今が最適なタイミングです。ZEROを使えば、初期段階からデータドリブンな運用ができ、成長スピードが格段に上がります。
+              </p>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div
+            class="faq-item bg-white rounded-xl border border-slate-100 overflow-hidden cursor-pointer hover:shadow-high-end transition-all duration-300"
+            onclick="this.classList.toggle('open')"
+          >
+            <div class="flex items-center justify-between p-6">
+              <p class="text-sm font-bold text-navy pr-4">
+                Q3. ZEROはどんなジャンルに対応していますか？
+              </p>
+              <span
+                class="faq-icon material-symbols-outlined text-slate-400 text-xl flex-shrink-0"
+                >add</span
+              >
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-sm text-slate-500 leading-relaxed">
+                ビジネス系、教育系、エンタメ系など、幅広いジャンルに対応しています。あなた独自のナレッジを学習させることで、どんなジャンルでも対応可能です。
+              </p>
+            </div>
+          </div>
+          <!-- Q4 -->
+          <div
+            class="faq-item bg-white rounded-xl border border-slate-100 overflow-hidden cursor-pointer hover:shadow-high-end transition-all duration-300"
+            onclick="this.classList.toggle('open')"
+          >
+            <div class="flex items-center justify-between p-6">
+              <p class="text-sm font-bold text-navy pr-4">Q4. 支払い方法は？</p>
+              <span
+                class="faq-icon material-symbols-outlined text-slate-400 text-xl flex-shrink-0"
+                >add</span
+              >
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-sm text-slate-500 leading-relaxed">
+                クレジットカード決済（一括・分割）、銀行振込に対応しています。詳細は申込フォーム提出後にご案内します。
+              </p>
+            </div>
+          </div>
+          <!-- Q5 -->
+          <div
+            class="faq-item bg-white rounded-xl border border-slate-100 overflow-hidden cursor-pointer hover:shadow-high-end transition-all duration-300"
+            onclick="this.classList.toggle('open')"
+          >
+            <div class="flex items-center justify-between p-6">
+              <p class="text-sm font-bold text-navy pr-4">
+                Q5. 参加後、いつからZEROを使えますか？
+              </p>
+              <span
+                class="faq-icon material-symbols-outlined text-slate-400 text-xl flex-shrink-0"
+                >add</span
+              >
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-sm text-slate-500 leading-relaxed">
+                申込完了後、最短で翌日からご利用いただけます。初回オンボーディングで、使い方をサポートします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション11: 緊急性・希少性 -->
+    <!-- ================================================================== -->
+    <section class="py-20 lg:py-28 bg-navy relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute -top-1/2 -left-1/4 w-[1000px] h-[1000px] bg-red-500/10 rounded-full blur-[150px] animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
+        ></div>
+        <div
+          class="absolute inset-0"
+          style="
+            background-image: radial-gradient(
+              circle at 2px 2px,
+              rgba(255, 255, 255, 0.03) 1px,
+              transparent 0
+            );
+            background-size: 40px 40px;
+          "
+        ></div>
+      </div>
+      <div class="mx-auto max-w-3xl px-8 relative z-10 text-center">
+        <div
+          class="text-[10px] font-medium text-red-400/80 mb-6 tracking-[0.15em] uppercase"
+        >
+          Limited Offer
+        </div>
+        <h2
+          class="text-3xl font-bold text-white mb-10 tracking-heading leading-tight"
+        >
+          今すぐ<span class="gradient-text-blue">申し込むべき</span>理由
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div
+            class="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10"
+          >
+            <div
+              class="text-[10px] font-bold text-red-400 mb-3 tracking-widest uppercase"
+            >
+              Reason 01
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              募集期間は3日間限定
+            </h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              この案内は、<strong class="text-white"
+                >◯月◯日（◯）23:59まで</strong
+              >の限定募集です。期間を過ぎると、次回募集は未定です。
+            </p>
+          </div>
+          <div
+            class="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10"
+          >
+            <div
+              class="text-[10px] font-bold text-red-400 mb-3 tracking-widest uppercase"
+            >
+              Reason 02
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              定員に達し次第、早期終了
+            </h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              サポート品質を保つため、定員は<strong class="text-white"
+                >◯名まで</strong
+              >。定員に達した時点で、募集を早期終了します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション12: 申込フォーム -->
+    <!-- ================================================================== -->
     <section
       id="apply"
       class="section-spacing bg-navy relative overflow-hidden"
     >
-      <!-- クリエイティブ背景：動的なグロー -->
       <div class="absolute inset-0 z-0">
         <div
           class="absolute -top-1/2 -left-1/4 w-[1000px] h-[1000px] bg-primary/15 rounded-full blur-[150px] animate-pulse"
@@ -1564,84 +1605,98 @@
       <div class="mx-auto max-w-2xl px-8 relative z-10">
         <div class="text-center mb-12">
           <div
-            class="text-[11px] font-medium text-slate-400 mb-6 tracking-[0.15em] uppercase"
+            class="text-[10px] font-medium text-slate-400 mb-6 tracking-[0.15em] uppercase"
           >
-            今月の審査枠：残り7名
+            Application Form
           </div>
           <h2
             class="text-3xl font-bold text-white mb-6 tracking-heading leading-tight"
           >
-            3ヶ月後、あなたのチャンネルは<br /><span class="gradient-text-blue"
-              >どう変わっていますか？</span
-            >
+            受講希望フォーム
           </h2>
+          <p class="text-base text-white font-medium mb-4">
+            ZEROで、あなたのYouTube運用を変えましょう。
+          </p>
           <p
-            class="text-base text-slate-400 max-w-xl mx-auto font-light leading-relaxed"
+            class="text-sm text-slate-400 max-w-xl mx-auto font-light leading-relaxed"
           >
-            BOLT WRITINGは審査制です。本気でYouTubeを伸ばしたい方のみ、<br />下記フォームよりお申し込みください。
+            下記のフォームをご提出ください。<br />24時間以内に、詳細のご案内をお送りします。
           </p>
         </div>
-        <form
-          class="bg-white/5 backdrop-blur rounded-2xl p-8 sm:p-10 border border-white/10 space-y-6"
+        <!-- UTAGE申込フォーム プレースホルダー -->
+        <div
+          class="bg-white/5 backdrop-blur rounded-2xl p-8 sm:p-10 border border-white/10 text-center"
         >
-          <div>
-            <label
-              class="block text-[11px] font-bold text-white/80 uppercase tracking-widest mb-2"
-              >お名前</label
+          <div class="py-16">
+            <span
+              class="material-symbols-outlined text-white/20 text-5xl mb-4 block"
+              >description</span
             >
-            <input
-              type="text"
-              placeholder="山田 太郎"
-              class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
-            />
+            <p class="text-white/40 text-sm mb-2">[UTAGE申込フォーム]</p>
+            <p class="text-[11px] text-white/30">
+              動画を一定時間視聴後に表示されます
+            </p>
           </div>
-          <div>
-            <label
-              class="block text-[11px] font-bold text-white/80 uppercase tracking-widest mb-2"
-              >メールアドレス</label
-            >
-            <input
-              type="email"
-              placeholder="example@email.com"
-              class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
-            />
-          </div>
-          <div>
-            <label
-              class="block text-[11px] font-bold text-white/80 uppercase tracking-widest mb-2"
-              >YouTubeチャンネルURL（任意）</label
-            >
-            <input
-              type="url"
-              placeholder="https://youtube.com/@channel"
-              class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
-            />
-          </div>
-          <div>
-            <label
-              class="block text-[11px] font-bold text-white/80 uppercase tracking-widest mb-2"
-              >現在の課題・ご質問</label
-            >
-            <textarea
-              rows="4"
-              placeholder="YouTube運用で抱えている課題や、BOLT WRITINGについてのご質問をお聞かせください。"
-              class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="w-full btn-primary bg-white text-navy py-4 hover:bg-slate-100 border-none text-sm font-bold tracking-wide"
-          >
-            無料で審査に申し込む →
-          </button>
-          <p class="text-[11px] text-white/50 text-center mt-4">
-            審査は無料・30秒で完了｜3営業日以内にご連絡
-          </p>
-        </form>
+        </div>
       </div>
     </section>
+
+    <!-- ================================================================== -->
+    <!-- セクション13: 最後のメッセージ -->
+    <!-- ================================================================== -->
+    <section class="section-spacing relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/20 to-white"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px]"
+        ></div>
+      </div>
+      <div class="mx-auto max-w-3xl px-8 relative z-10 text-center">
+        <div
+          class="inline-block text-[9px] font-bold tracking-[0.3em] text-primary mb-8 uppercase"
+        >
+          Closing Message
+        </div>
+        <h2
+          class="text-2xl font-bold tracking-heading text-navy sm:text-3xl mb-8"
+        >
+          最後に
+        </h2>
+        <div class="space-y-6 text-base text-slate-custom leading-[1.9]">
+          <p>YouTubeで成果を出すために、もう感覚に頼る必要はありません。</p>
+          <p>
+            ZEROがあなたの企画、台本、派生コンテンツまで全てサポートし、<br
+              class="hidden sm:block"
+            />
+            あなたは本当に大切なこと——<strong class="text-navy"
+              >価値提供とコミュニケーション</strong
+            >——に集中できます。
+          </p>
+          <p>
+            僕たちは、あなたの成果に<strong class="text-navy"
+              >100%コミット</strong
+            >します。<br />
+            一緒に、完全AI駆動のYouTube運用を実現しましょう。
+          </p>
+        </div>
+        <div class="mt-12">
+          <p class="text-xl font-bold text-navy">える</p>
+        </div>
+        <div class="mt-10">
+          <a class="btn-primary" href="#apply">
+            受講希望フォームへ
+            <span class="ml-2 text-[14px]">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- Footer -->
+    <!-- ================================================================== -->
     <footer class="relative pt-32 pb-16 overflow-hidden">
-      <!-- フッター背景 -->
       <div class="absolute inset-0 z-0">
         <div
           class="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-white"
@@ -1682,18 +1737,13 @@
             </h4>
             <ul class="space-y-3.5 text-[12px] text-slate-500 font-normal">
               <li>
-                <a class="hover:text-primary transition-colors" href="#"
+                <a class="hover:text-primary transition-colors" href="#features"
                   >Features</a
                 >
               </li>
               <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Technology</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Security</a
+                <a class="hover:text-primary transition-colors" href="#support"
+                  >Support</a
                 >
               </li>
             </ul>
@@ -1706,42 +1756,17 @@
             </h4>
             <ul class="space-y-3.5 text-[12px] text-slate-500 font-normal">
               <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Documentation</a
+                <a
+                  class="hover:text-primary transition-colors"
+                  href="#testimonials"
+                  >Success Stories</a
                 >
               </li>
               <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Case Studies</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Community</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4
-              class="text-[10px] font-bold text-navy mb-6 uppercase tracking-[0.2em]"
-            >
-              Company
-            </h4>
-            <ul class="space-y-3.5 text-[12px] text-slate-500 font-normal">
-              <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Careers</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-primary transition-colors" href="#"
-                  >Vision</a
+                <a
+                  class="hover:text-primary transition-colors"
+                  href="#instructor"
+                  >Instructor</a
                 >
               </li>
             </ul>
@@ -1772,7 +1797,7 @@
           <p
             class="text-[10px] text-slate-300 font-bold tracking-widest uppercase"
           >
-            © 2025 BOLT WRITING. Drive Your YouTube with AI.
+            &copy; 2025 BOLT WRITING. Drive Your YouTube with AI.
           </p>
           <div class="flex gap-8">
             <a class="text-slate-300 hover:text-navy transition-colors" href="#"
