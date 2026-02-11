@@ -12,8 +12,19 @@
 
 ```
 lps/zero/
-├── README.md      # このファイル（編集ガイド）
-└── index.html     # LPのHTMLファイル
+├── README.md              # このファイル（編集ガイド）
+├── index.html             # LPのHTMLファイル
+├── package.json           # Node.js依存関係
+├── .env                   # 環境変数（Git管理外）
+├── .env.example           # 環境変数のサンプル
+├── scripts/
+│   ├── generate-image.js  # 画像生成メインスクリプト
+│   └── update-html.js     # HTML自動更新
+└── assets/
+    └── images/            # 生成された画像
+        ├── instructor/    # 講師写真
+        ├── testimonials/  # お客様の声
+        └── features/      # 機能UI画面
 ```
 
 ---
@@ -51,6 +62,82 @@ python3 -m http.server 8000
 ```
 
 → http://localhost:8000 でアクセス
+
+---
+
+## 🎨 AI画像生成システム
+
+Vertex AI Gemini を使って、自然言語で画像を生成・配置できます。
+
+### セットアップ
+
+1. **依存関係のインストール**
+```bash
+cd lps/zero
+npm install
+```
+
+2. **環境変数の設定**
+```bash
+cp .env.example .env
+```
+
+`.env` を編集:
+```env
+GOOGLE_CLOUD_PROJECT_ID=your-project-id
+GOOGLE_CLOUD_LOCATION=us-central1
+```
+
+3. **Google Cloud 認証**
+```bash
+gcloud auth application-default login
+```
+
+### 使い方
+
+#### 基本コマンド
+```bash
+npm run gen "<プロンプト>" -- --target <ターゲット>
+```
+
+#### 利用可能なターゲット
+
+| ターゲット | 説明 | 保存先 |
+|-----------|------|--------|
+| `instructor` | 講師の写真 | `assets/images/instructor/profile.jpg` |
+| `customer-1` | お客様01 | `assets/images/testimonials/customer-01.jpg` |
+| `customer-2` | お客様02 | `assets/images/testimonials/customer-02.jpg` |
+| `customer-3` | お客様03 | `assets/images/testimonials/customer-03.jpg` |
+| `feature-1` | Market In Research | `assets/images/features/market-research.jpg` |
+| `feature-2` | Data Driven Planning | `assets/images/features/data-planning.jpg` |
+| `feature-3` | Neuro Bolt Writing | `assets/images/features/bolt-writing.jpg` |
+
+#### 実行例
+
+**講師の写真を生成**
+```bash
+npm run gen "30代日本人男性、ビジネスカジュアル、笑顔、白背景" -- --target instructor
+```
+
+**お客様の写真を生成**
+```bash
+npm run gen "40代日本人女性、スーツ、笑顔、白背景" -- --target customer-1
+```
+
+**UI画面を生成**
+```bash
+npm run gen "モダンなダッシュボード、青基調、グラフ表示" -- --target feature-1
+```
+
+### 音声入力での使い方
+
+音声入力でも使えます:
+```bash
+# 音声で「講師の写真を30代男性で生成して」と言う
+npm run gen "30代男性、ビジネスカジュアル、プロフェッショナル" -- --target instructor
+```
+
+生成 → 保存 → HTML更新が自動で実行されます。
 
 ---
 
