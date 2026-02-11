@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd AI image generation system for ZERO LP\n\n- Add Gemini API-based image generation system\n- Support natural language prompts for image creation\n- Automatic image placement in HTML\n- Generated instructor profile image\n- Setup scripts and documentation\n\nFeatures:\n- Image generation using gemini-3-pro-image-preview\n- Automatic HTML update with generated images\n- Support for 7 image targets \\(instructor, customers, features\\)\n- Simple CLI interface for image generation\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
